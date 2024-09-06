@@ -4,8 +4,9 @@ const Home = () => {
 
     return (
         <main className="">
-            <HomeHeader />
-            <Awards />
+            <h2 className="text-2xl">Home</h2>
+            {/* <HomeHeader />
+            <Awards /> */}
         </main>
     )
 }
