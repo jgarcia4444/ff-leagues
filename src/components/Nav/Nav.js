@@ -2,6 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { NavLink } from 'react-router-dom'
+
 const Nav = () => {
 
     const links = [
