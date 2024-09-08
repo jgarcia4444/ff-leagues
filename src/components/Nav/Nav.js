@@ -1,6 +1,7 @@
-
 import React from 'react';
+
 import NavLink from './NavLink/NavLink';
+import LogoNavLink from './LogoNavLink/LogoNavLink';
 
 const Nav = () => {
 
@@ -13,9 +14,11 @@ const Nav = () => {
     }
 
     return (
-        <section className="flex flex-row w-full justify-end gap-10">
-            {/* logoNavLink */}
-            {renderNavLinks()}
+        <section className="flex flex-row w-full justify-between items-center">
+            <LogoNavLink />
+            <div className="flex flex-row gap-10">
+                {renderNavLinks()}
+            </div>
         </section>
     )
 }

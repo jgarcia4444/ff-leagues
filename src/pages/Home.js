@@ -29,8 +29,7 @@ const Home = () => {
 
     return (
         <Layout >
-            <main className="text-white">
-                <h2 className="text-2xl">Home</h2>
+            <main className="text-white flex flex-col gap-8">
                 <HomeHeader leagueInfo={leagueInfo} />
                 <Awards />
             </main>
