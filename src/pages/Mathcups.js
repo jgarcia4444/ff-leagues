@@ -1,11 +1,12 @@
 import React from 'react';
+import Layout from '../shared/Layout';
 
 const Matchups = () => {
 
     return (
-        <div className="">
+        <Layout>
             <h2 className="text-2xl">Matchups</h2>
-        </div>
+        </Layout>
     )
 }
 

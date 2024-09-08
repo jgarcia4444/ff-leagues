@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Layout from '../shared/Layout';
+
 const Standings = () => {
 
     return (
-        <div className="">
+        <Layout>
             <h2 className="text-2xl">Standings</h2>
-        </div>
+        </Layout>
     )
 };
 
