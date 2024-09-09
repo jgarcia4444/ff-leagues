@@ -5,7 +5,7 @@ const NavLink = ({linkInfo}) => {
     const {to, label} = linkInfo;
 
     return (
-        <a href={to} className="text-white">{label}</a>
+        <a href={to} className="hover:text-white text-slate-300 transition-all duration-300">{label}</a>
     )
 };
 

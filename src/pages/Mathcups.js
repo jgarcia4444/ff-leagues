@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import Layout from '../shared/Layout';
 import Urls from '../config/Urls';
+import SpinningLoader from '../shared/Loaders/SpinningLoader';
 
 const Matchups = () => {
 
@@ -32,7 +33,7 @@ const Matchups = () => {
 
     return (
         <Layout>
-
+            <SpinningLoader />
         </Layout>
     )
 }
