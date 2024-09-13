@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Home from './pages/Home';
-import Matchups from "./pages/Mathcups";
+import Matchups from "./pages/Matchups";
 import Standings from "./pages/Standings";
 
 function App() {
