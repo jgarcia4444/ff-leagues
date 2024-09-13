@@ -6,8 +6,25 @@ const LeagueMatchups = ({matchups}) => {
 
     console.log(matchups);
 
+    const filterMathchups = () => {
+        const upperLimit = (matchups / 2) + 1;
+        const filteredMatchups = [];
+        let i = 1;
+        while (i < upperLimit) {
+            let matchingMatchIds = matchups.filter(matchup => matchup.matchup_id === i);
+            let matchupInfo = {
+                team1: matchingMatchIds[0],
+                team2: matchingMatchIds[1]
+            }
+            filteredMatchups.push(matchupInfo);
+            i += 1;
+        }
+        return filteredMatchups;
+    }
+
     const renderMatchups = () => {
-        return matchups.map((matchup, i) => <Matchup info={matchup} key={`${i}-${matchup.roster_id}`} />)
+        const filteredMatchups = filterMathchups();
+        return filteredMatchups.map((matchup, i) => <Matchup info={matchup} key={`${i}-${matchup.team1.matchup_id}`} />)
     }
 
     return (
