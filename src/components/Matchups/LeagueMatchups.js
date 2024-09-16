@@ -4,10 +4,8 @@ import Matchup from './Matchup/Matchup';
 
 const LeagueMatchups = ({matchups}) => {
 
-    console.log(matchups);
-
     const filterMathchups = () => {
-        const upperLimit = (matchups / 2) + 1;
+        const upperLimit = (matchups.length / 2) + 1;
         const filteredMatchups = [];
         let i = 1;
         while (i < upperLimit) {
@@ -19,6 +17,7 @@ const LeagueMatchups = ({matchups}) => {
             filteredMatchups.push(matchupInfo);
             i += 1;
         }
+        console.log(filteredMatchups);
         return filteredMatchups;
     }
 
@@ -28,7 +27,7 @@ const LeagueMatchups = ({matchups}) => {
     }
 
     return (
-        <div className="flex flex-row ">
+        <div className="flex flex-row gap-10">
             {renderMatchups()}
         </div>
     )
