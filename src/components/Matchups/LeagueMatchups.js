@@ -27,7 +27,7 @@ const LeagueMatchups = ({matchups}) => {
     }
 
     return (
-        <div className="flex flex-row gap-10">
+        <div className="w-full mt-8 overflow-x-auto flex flex-row gap-12 py-4">
             {renderMatchups()}
         </div>
     )
