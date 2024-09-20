@@ -2,10 +2,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 import './App.css';
 import Home from './pages/Home';
 import Matchups from "./pages/Matchups";
 import Standings from "./pages/Standings";
+import store from "./redux/store";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,7 +25,9 @@ function App() {
     }
   ])
   return (
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }
 
