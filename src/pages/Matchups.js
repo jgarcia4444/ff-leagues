@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 
 import Urls from '../config/Urls';
 
@@ -6,35 +7,18 @@ import Layout from '../shared/Layout';
 import SpinningLoader from '../shared/Loaders/SpinningLoader';
 import LeagueMatchups from '../components/Matchups/LeagueMatchups';
 
-const Matchups = () => {
+import getNflState from '../redux/actions/nflState/getNflState';
+
+const Matchups = ({getNflState}) => {
 
     const {nflStateUrl, matchupsUrl} = Urls
     const [leagueWeek, setLeagueWeek] = useState(0);
     const [loading, setLoading] = useState(false);
     const [matchups, setMatchups] = useState([]);
 
-    const getMatchups = leagueWeek => {
-        const configuredUrl = `${matchupsUrl}${leagueWeek}`
-            fetch(configuredUrl)
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setMatchups(data);
-                    setLoading(false);
-                })
-    }
-
     useEffect(() => {
-        if (leagueWeek === 0) {
-            setLoading(true);
-            fetch(nflStateUrl)
-                .then(res => res.json())
-                .then(data => {
-                    setLeagueWeek(data.display_week);
-                    getMatchups(data.display_week);
-                })
-        } 
-    }, [leagueWeek])
+
+    },)
 
     return (
         <Layout>
@@ -47,4 +31,19 @@ const Matchups = () => {
     )
 }
 
-export default Matchups;
+const mapStateToProps = state => {
+    return {
+        NflState: state.NflState,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getNflstate: () => dispatch(getNflState())
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Matchups);
