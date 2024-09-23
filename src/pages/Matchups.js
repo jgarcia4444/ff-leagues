@@ -8,24 +8,29 @@ import SpinningLoader from '../shared/Loaders/SpinningLoader';
 import LeagueMatchups from '../components/Matchups/LeagueMatchups';
 
 import getNflState from '../redux/actions/nflState/getNflState';
+import fetchMatchups from '../redux/actions/matchups/fetchMatchups';
 
-const Matchups = ({getNflState}) => {
+const Matchups = ({getNflState, NflState, fetchMatchups, Matchups}) => {
 
-    const {nflStateUrl, matchupsUrl} = Urls
-    const [leagueWeek, setLeagueWeek] = useState(0);
-    const [loading, setLoading] = useState(false);
-    const [matchups, setMatchups] = useState([]);
+    const {nflWeek} = NflState;
+    const {matchups} = Matchups;
 
     useEffect(() => {
-
-    },)
+        if (nflWeek === 0) {
+            getNflState();
+        } else {
+            if (matchups.length === 0) {
+                fetchMatchups(nflWeek);
+            }
+        }
+    },[nflWeek])
 
     return (
         <Layout>
-            {loading === true ?
+            {NflState.loading === true || Matchups.loading === true  ?
                 <SpinningLoader />
                 :
-                <LeagueMatchups matchups={matchups} />
+                <LeagueMatchups />
             }
         </Layout>
     )
@@ -34,12 +39,14 @@ const Matchups = ({getNflState}) => {
 const mapStateToProps = state => {
     return {
         NflState: state.NflState,
+        Matchups: state.Matchups,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getNflstate: () => dispatch(getNflState())
+        getNflstate: () => dispatch(getNflState()),
+        fetchMatchups: nflWeek => dispatch(fetchMatchups(nflWeek)),
     }
 }
 

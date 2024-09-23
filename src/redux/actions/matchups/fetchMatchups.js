@@ -1,11 +1,18 @@
 import Urls from "../../../config/Urls";
-const {} = Urls;
+const {matchupsUrl} = Urls;
 
-const fetchMathcups = () => {
-
-    return {
-
+const fetchMatchups = (nflWeek) => {
+    const configuredUrl = `${matchupsUrl}${nflWeek}`;
+    return async dispatch => {
+        dispatch({type: "FETCHING_MATCHUPS"});
+        fetch(configuredUrl)
+            .then(res => res.json())
+            .then(data => {
+                setTimeout(() => {
+                    return dispatch({type: "MATCHUPS_FETCHED", matchups: data});
+                }, 750)
+            })
     }
 }
 
-export default fetchMathcups;
+export default fetchMatchups;
