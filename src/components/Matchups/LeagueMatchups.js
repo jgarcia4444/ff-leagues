@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 
 import Matchup from './Matchup/Matchup';
 
@@ -33,4 +34,13 @@ const LeagueMatchups = ({matchups}) => {
     )
 }
 
-export default LeagueMatchups;
+const mapStateToProps = state => {
+    return {
+        matchups: state.Matchups.matchups,
+    }
+} 
+
+export default connect(
+    mapStateToProps,
+    null
+)(LeagueMatchups);

@@ -2,6 +2,7 @@ import Urls from "../../../config/Urls";
 const {matchupsUrl} = Urls;
 
 const fetchMatchups = (nflWeek) => {
+    console.log("Fetch Matchups action triggered!");
     const configuredUrl = `${matchupsUrl}${nflWeek}`;
     return async dispatch => {
         dispatch({type: "FETCHING_MATCHUPS"});

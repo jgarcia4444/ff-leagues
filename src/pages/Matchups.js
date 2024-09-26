@@ -7,8 +7,8 @@ import Layout from '../shared/Layout';
 import SpinningLoader from '../shared/Loaders/SpinningLoader';
 import LeagueMatchups from '../components/Matchups/LeagueMatchups';
 
-import getNflState from '../redux/actions/nflState/getNflState';
 import fetchMatchups from '../redux/actions/matchups/fetchMatchups';
+import getNflState from '../redux/actions/nflState/getNflState';
 
 const Matchups = ({getNflState, NflState, fetchMatchups, Matchups}) => {
 
@@ -16,6 +16,7 @@ const Matchups = ({getNflState, NflState, fetchMatchups, Matchups}) => {
     const {matchups} = Matchups;
 
     useEffect(() => {
+        console.log("From the useeffect of the Matchups component.")
         if (nflWeek === 0) {
             getNflState();
         } else {
@@ -45,7 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getNflstate: () => dispatch(getNflState()),
+        getNflState: () => dispatch(getNflState()),
         fetchMatchups: nflWeek => dispatch(fetchMatchups(nflWeek)),
     }
 }

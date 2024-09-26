@@ -2,6 +2,7 @@ import Urls from "../../../config/Urls";
 const {nflStateUrl} = Urls;
 
 const getNflState = () => {
+    console.log("Get NFL state action triggered!");
     return async dispatch => {
         dispatch({type: "GETTING_NFL_STATE"});
         fetch(nflStateUrl)
