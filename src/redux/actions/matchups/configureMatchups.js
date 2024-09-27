@@ -20,7 +20,7 @@ const configureMatchups = () => {
                 const rosterPropertiesToAdd = selectRosterProperties(data)
                 dispatch({type: "ROSTER_PROPERTIES_FETCHED", dataToAdd: rosterPropertiesToAdd});
                 fetch(users)
-                    .then(res => res.json()
+                    .then(res => res.json())
                     .then(userData => {
                         setTimeout(() => {
                             return dispatch({type: "MATCHUPS_CONFIGURED", userData});
