@@ -2,6 +2,7 @@
 const initialState = {
     matchups: [],
     loading: false,
+    matchupsCOnfigured: false,
 }
 
 const MatchupsReducer = (state=initialState, action) => {

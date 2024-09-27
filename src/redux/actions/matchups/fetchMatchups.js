@@ -1,8 +1,8 @@
+import getNflState from "../nflState/getNflState";
 import Urls from "../../../config/Urls";
 const {matchupsUrl} = Urls;
 
 const fetchMatchups = (nflWeek) => {
-    console.log("Fetch Matchups action triggered!");
     const configuredUrl = `${matchupsUrl}${nflWeek}`;
     return async dispatch => {
         dispatch({type: "FETCHING_MATCHUPS"});
@@ -10,7 +10,13 @@ const fetchMatchups = (nflWeek) => {
             .then(res => res.json())
             .then(data => {
                 setTimeout(() => {
-                    return dispatch({type: "MATCHUPS_FETCHED", matchups: data});
+                    const {roster_id, matchup_id, points} = data;
+                    const matchupsData = {
+                        roster_id,
+                        matchup_id,
+                        points,
+                    }
+                    return dispatch({type: "MATCHUPS_FETCHED", matchups: matchupsData});
                 }, 750)
             })
     }

@@ -9,19 +9,23 @@ import LeagueMatchups from '../components/Matchups/LeagueMatchups';
 
 import fetchMatchups from '../redux/actions/matchups/fetchMatchups';
 import getNflState from '../redux/actions/nflState/getNflState';
+import configureMatchups from '../redux/actions/matchups/configureMatchups';
 
-const Matchups = ({getNflState, NflState, fetchMatchups, Matchups}) => {
+const Matchups = ({getNflState, NflState, fetchMatchups, Matchups, configureMatchups}) => {
 
     const {nflWeek} = NflState;
-    const {matchups} = Matchups;
+    const {matchups, matchupsConfigured} = Matchups;
 
     useEffect(() => {
-        console.log("From the useeffect of the Matchups component.")
-        if (nflWeek === 0) {
-            getNflState();
-        } else {
-            if (matchups.length === 0) {
-                fetchMatchups(nflWeek);
+        if (matchupsConfigured === false) {
+            if (nflWeek === 0) {
+                getNflState();
+            } else if (nflWeek !== 0 && matchups.length === 0) {
+                if (matchups.length === 0) {
+                    fetchMatchups(nflWeek);
+                }
+            } else {
+                configureMatchups(matchups);
             }
         }
     },[nflWeek])
@@ -48,6 +52,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getNflState: () => dispatch(getNflState()),
         fetchMatchups: nflWeek => dispatch(fetchMatchups(nflWeek)),
+        configureMatchups: matchups => dispatch(configureMatchups(matchups)),
     }
 }
 
