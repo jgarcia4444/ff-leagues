@@ -2,7 +2,7 @@
 const initialState = {
     matchups: [],
     loading: false,
-    matchupsCOnfigured: false,
+    matchupsConfigured: false,
 }
 
 const MatchupsReducer = (state=initialState, action) => {

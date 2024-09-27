@@ -18,15 +18,15 @@ const Matchups = ({getNflState, NflState, fetchMatchups, Matchups, configureMatc
         if (matchupsConfigured === false) {
             if (nflWeek === 0) {
                 getNflState();
-            } else if (nflWeek !== 0 && matchups.length === 0) {
-                if (matchups.length === 0) {
-                    fetchMatchups(nflWeek);
-                }
             } else {
-                configureMatchups(matchups);
+                 if (matchups.length === 0) {
+                     fetchMatchups(nflWeek);
+                 } else {
+                    configureMatchups();
+                 }
             }
         }
-    },[nflWeek])
+    },[nflWeek, matchups])
 
     return (
         <Layout>
