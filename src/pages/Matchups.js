@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-
-import Urls from '../config/Urls';
 
 import Layout from '../shared/Layout';
 import SpinningLoader from '../shared/Loaders/SpinningLoader';
