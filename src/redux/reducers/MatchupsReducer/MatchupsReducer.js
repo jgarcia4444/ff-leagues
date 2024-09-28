@@ -28,13 +28,15 @@ const addUsersProps = (matchups, usersData) => {
         let userData = usersData[i];
         let matchupToChange = matchups.filter(matchup => matchup.owner_id === userData.user_id)[0];
         let dataToAddFromUserData = {
-            avatar: userData.metadata.avatar,
-            display_name: userData.display_name
+            avatar_id: userData.avatar,
+            teamName: userData.metadata.team_name,
+            displayName: userData.display_name
         }
         let newMatchup = {
             ...matchupToChange,
             ...dataToAddFromUserData,
         }
+        newMatchups.push(newMatchup)
         i += 1;
     }
     return newMatchups;
