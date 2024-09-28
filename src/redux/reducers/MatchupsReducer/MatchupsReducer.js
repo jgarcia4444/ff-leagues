@@ -21,12 +21,33 @@ const addRosterProps = (matchups, dataToAdd) => {
     return matchupsWithAddedProperties;
 }
 
+const addUsersProps = (matchups, usersData) => {
+    let i = 0;
+    let newMatchups = [];
+    while (i < usersData.length) {
+        let userData = usersData[i];
+        let matchupToChange = matchups.filter(matchup => matchup.owner_id === userData.user_id)[0];
+        let dataToAddFromUserData = {
+            avatar: userData.metadata.avatar,
+            display_name: userData.display_name
+        }
+        let newMatchup = {
+            ...matchupToChange,
+            ...dataToAddFromUserData,
+        }
+        i += 1;
+    }
+    return newMatchups;
+}
+
 const MatchupsReducer = (state=initialState, action) => {
     switch(action.type) {
         case "MATCHUPS_CONFIGURED":
+            let newMatchups = addUsersProps(state.matchups, action.userData)
             return {
                 ...state,
                 matchupsConfigured: true,
+                matchups: newMatchups,
             }
         case "ROSTER_PROPERTIES_FETCHED":
             let rosterPropsMatchups = addRosterProps(state.matchups, action.dataToAdd);

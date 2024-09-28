@@ -19,7 +19,6 @@ const configureMatchups = () => {
             .then(res => res.json())
             .then(data => {
                 const rosterPropertiesToAdd = selectRosterProperties(data)
-                console.log("ROSTER PROPERTIES TO ADD", rosterPropertiesToAdd)
                 dispatch({type: "ROSTER_PROPERTIES_FETCHED", dataToAdd: rosterPropertiesToAdd});
                 fetch(users)
                     .then(res => res.json())
