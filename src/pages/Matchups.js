@@ -22,8 +22,8 @@ const Matchups = ({getNflState, NflState, fetchMatchups, Matchups, configureMatc
                  if (matchups.length === 0) {
                      fetchMatchups(nflWeek);
                  } else {
+                    console.log("HOLA!");
                     configureMatchups();
-                    console.log("Matchups from the Matchups component", matchups);
                  }
             }
         }

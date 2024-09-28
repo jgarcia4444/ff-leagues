@@ -5,8 +5,37 @@ const initialState = {
     matchupsConfigured: false,
 }
 
+const addRosterProps = (matchups, dataToAdd) => {
+    let i = 0;
+    let matchupsWithAddedProperties = [];
+    while (i < dataToAdd.length) {
+        let propsToAdd = dataToAdd[i];
+        let matchupToChange = matchups.filter(matchup => matchup.roster_id === propsToAdd.roster_id)[0];
+        let newMatchup = {
+            ...matchupToChange,
+            ...propsToAdd
+        }
+        matchupsWithAddedProperties.push(newMatchup);
+        i += 1;
+    }
+    return matchupsWithAddedProperties;
+}
+
 const MatchupsReducer = (state=initialState, action) => {
     switch(action.type) {
+        case "MATCHUPS_CONFIGURED":
+            return {
+                ...state,
+                matchupsConfigured: true,
+            }
+        case "ROSTER_PROPERTIES_FETCHED":
+            let rosterPropsMatchups = addRosterProps(state.matchups, action.dataToAdd);
+            console.log("ROSTER_PROPERTIES_FETCHED", rosterPropsMatchups);
+            return {
+                ...state,
+                loading: false,
+                matchups: rosterPropsMatchups,
+            }
         case "CONFIGURING_MATCHUPS":
             return {
                 ...state,
