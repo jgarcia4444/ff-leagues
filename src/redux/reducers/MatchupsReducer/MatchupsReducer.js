@@ -7,6 +7,11 @@ const initialState = {
 
 const MatchupsReducer = (state=initialState, action) => {
     switch(action.type) {
+        case "CONFIGURING_MATCHUPS":
+            return {
+                ...state,
+                loading: true,
+            }
         case "FETCHING_MATCHUPS":
             return {
                 ...state,

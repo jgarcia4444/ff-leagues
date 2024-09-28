@@ -3,10 +3,11 @@ const {rosters, users} = Urls;
 
 const selectRosterProperties = data => {
     return data.map(item => {
-        const {settings, owner_id} = item;
+        const {settings, owner_id, roster_id} = item;
         return {
             settings,
-            owner_id
+            owner_id,
+            roster_id,
         }
     })
 }

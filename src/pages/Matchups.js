@@ -23,6 +23,7 @@ const Matchups = ({getNflState, NflState, fetchMatchups, Matchups, configureMatc
                      fetchMatchups(nflWeek);
                  } else {
                     configureMatchups();
+                    console.log("Matchups from the Matchups component", matchups);
                  }
             }
         }
