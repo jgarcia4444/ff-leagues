@@ -72,7 +72,6 @@ const MatchupsReducer = (state=initialState, action) => {
         case "MATCHUPS_FETCHED":
             return {
                 ...state,
-                loading: false,
                 matchups: action.matchups,
             }
         default:
