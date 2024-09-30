@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { AiFillCaretUp } from "react-icons/ai";
 
 import Urls from '../../../../config/Urls';
 
@@ -12,7 +13,10 @@ const MatchupTeam = ({teamInfo, winning}) => {
     const {wins, losses} = settings;
 
     return (
-        <div className={`flex flex-col w-36 items-center justify-center ${winning === true ? 'bg-green-900' : 'bg-red-900'} bg-opacity-40`}>
+        <div className={`flex flex-col w-36 items-center justify-center relative`}>
+            <div className="absolute left-2 top-2">
+                <AiFillCaretUp className={`${winning === true ? "text-green-700" : "text-red-700 rotate-180"}`} size={20}/>
+            </div>
             <img src={`${avatarUrl}${avatar_id}`} alt="" className="w-20 h-20 rounded-full" />
             <div className="w-full text-left ">
                 <p className="text-sm  font-bold text-left">{teamName === undefined ? displayName : teamName} </p>
@@ -21,7 +25,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
                 <p className="text-xs text-left">{wins}-{losses}</p>
             </div>
             {points}
-        </div>
+        </div> 
     )
 }
 
