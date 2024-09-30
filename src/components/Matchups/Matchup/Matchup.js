@@ -6,6 +6,10 @@ const Matchup = ({info}) => {
 
     const {team1, team2} = info;
 
+    const checkWinning = () => {
+        
+    }
+
     return (
         <div className="rounded bg-slate-100 flex flex-row item-center justify-evenly text-slate-600 bg-opacity-50 w-80 h-40 mb-6">
             <MatchupTeam teamInfo={team1} winning={team1.points > team2.points} />
