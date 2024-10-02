@@ -6,14 +6,20 @@ const Matchup = ({info}) => {
 
     const {team1, team2} = info;
 
-    const checkWinning = () => {
-        
+    const checkWinning = (mainTeam, secondaryTeam) => {
+        if (mainTeam.points > secondaryTeam.points) {
+            return true;
+        } else if (mainTeam.points < secondaryTeam.points) {
+            return false;
+        } else {
+            return undefined;
+        }
     }
 
     return (
         <div className="rounded bg-slate-100 flex flex-row item-center justify-evenly text-slate-600 bg-opacity-50 w-80 h-40 mb-6">
-            <MatchupTeam teamInfo={team1} winning={team1.points > team2.points} />
-            <MatchupTeam teamInfo={team2} winning={team2.points > team1.points} />
+            <MatchupTeam teamInfo={team1} winning={checkWinning(team1, team2)} />
+            <MatchupTeam teamInfo={team2} winning={checkWinning(team2, team1)} />
         </div>
     )
 }

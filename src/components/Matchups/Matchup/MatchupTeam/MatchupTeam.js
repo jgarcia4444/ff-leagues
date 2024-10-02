@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import { AiFillCaretUp, AiOutlineMinus } from "react-icons/ai";
 
 import Urls from '../../../../config/Urls';
@@ -12,17 +12,19 @@ const MatchupTeam = ({teamInfo, winning}) => {
 
     const {wins, losses} = settings;
 
+    const [indicatorClass, setIndicatorClass] = useState("")
+
     const winningIndicator = () => {
-        var iconClass = '';
-        var indicator = <AiFillCaretUp className={iconClass} size={20} />
-        if (winning === 'true') {
-            iconClass = "text-green-700"
-        } else if (winning === 'even') {
-            iconClass = "text-slate-900";
-            indicator = <AiOutlineMinus className={iconClass} size={20} />
+        var indicator = <AiFillCaretUp className={indicatorClass} size={20} />
+        if (winning === true) {
+            setIndicatorClass("text-green-700")
+        } else if (winning === undefined) {
+            setIndicatorClass("text-slate-900");
+            indicator = <AiOutlineMinus className={indicatorClass} size={20} />
         } else {
-            iconClass = "text-red-700 rotate-180"
+            setIndicatorClass("text-red-700 rotate-180");
         }
+        console.log("Indicator", indicator);
         return indicator;
     }
 
