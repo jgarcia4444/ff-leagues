@@ -15,16 +15,18 @@ const MatchupTeam = ({teamInfo, winning}) => {
     const [indicatorClass, setIndicatorClass] = useState("")
 
     const winningIndicator = () => {
-        var indicator = <AiFillCaretUp className={indicatorClass} size={20} />
+        var indicator;
+        const iconSize = 20;
+        const winningClass = 'text-green-700';
+        const losingClass = 'text-red-700 rotate-180';
+        const tiedClass = 'text-slate-900'
         if (winning === true) {
-            setIndicatorClass("text-green-700")
+            indicator = <AiFillCaretUp size={iconSize} className={winningClass} />
         } else if (winning === undefined) {
-            setIndicatorClass("text-slate-900");
-            indicator = <AiOutlineMinus className={indicatorClass} size={20} />
+            indicator = <AiOutlineMinus size={iconSize} className={tiedClass} />
         } else {
-            setIndicatorClass("text-red-700 rotate-180");
+            indicator = <AiFillCaretUp size={20} className={losingClass} />
         }
-        console.log("Indicator", indicator);
         return indicator;
     }
 
