@@ -17,7 +17,7 @@ const Matchup = ({info}) => {
     }
 
     return (
-        <div className="rounded bg-slate-100 flex flex-row item-center justify-evenly text-slate-600 bg-opacity-50 w-80 h-40 mb-6">
+        <div className="rounded bg-slate-100 flex flex-row gap-2 item-center justify-evenly text-slate-600 bg-opacity-0 h-44 py-2 mb-6">
             <MatchupTeam teamInfo={team1} winning={checkWinning(team1, team2)} />
             <MatchupTeam teamInfo={team2} winning={checkWinning(team2, team1)} />
         </div>
