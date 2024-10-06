@@ -33,7 +33,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
             <div className="absolute left-2 top-2">
                 {winningIndicator()}
             </div>
-            <img src={`${avatarUrl}${avatar_id}`} alt="" className="w-20 h-20 rounded-full" />
+            <img src={`${avatarUrl}${avatar_id}`} alt="" className="w-20 h-20 rounded" />
             <div className="w-full text-left ">
                 <p className="text-sm  font-bold text-left text-nowrap">{teamName === undefined ? displayName : teamName} </p>
             </div>
