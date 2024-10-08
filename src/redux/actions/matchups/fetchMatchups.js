@@ -14,7 +14,6 @@ const selectProperties = data => {
 }
 
 const fetchMatchups = (nflWeek) => {
-    console.log("Fetch Matchups triggered")
     const configuredUrl = `${matchupsUrl}${nflWeek}`;
     return async dispatch => {
         dispatch({type: "FETCHING_MATCHUPS"});
@@ -23,7 +22,6 @@ const fetchMatchups = (nflWeek) => {
             .then(data => {
                 setTimeout(() => {
                     const matchupsData = selectProperties(data);
-                    console.log(matchupsData);
                     return dispatch({type: "MATCHUPS_FETCHED", matchups: matchupsData});
                 }, 750)
             })
