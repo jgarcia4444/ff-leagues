@@ -24,10 +24,20 @@ const Home = ({getNflState, fetchRosters, Rosters, NflState}) => {
             .then(data => setLeagueInfo(data))
     }
 
-    useEffect(() => {
+    const fetchData = () => {
         if (leagueInfo.name === "") {
             getLeagueInfo();
         }
+        if (Rosters.rosters.length === 0) {
+            fetchRosters();
+        }
+        if (NflState.nflWeek === 0) {
+            getNflState();
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
     })
 
     return (
