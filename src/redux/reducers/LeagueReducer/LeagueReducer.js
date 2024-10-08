@@ -1,6 +1,8 @@
 const initialState = {
     loading: false,
-    leagueInfo: {},
+    leagueInfo: {
+        name: ""
+    },
     error: ""
 }
 
@@ -12,9 +14,12 @@ const LeagueReducer = (state=initialState, action) => {
                 loading: true,
             }
         case "LEAGUE_INFO_FETCHED":
+
             return {
                 ...initialState,
-                leagueInfo: action.leagueInfo
+                leagueInfo: {
+                    ...action.leagueInfo,
+                }
             }
         case "LEAGUE_INFO_FETCH_ERROR":
             return {

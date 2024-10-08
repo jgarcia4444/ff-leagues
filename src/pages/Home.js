@@ -4,29 +4,19 @@ import { connect } from 'react-redux';
 import HomeHeader from '../components/Home/HomeHeader/HomeHeader';
 import Awards from '../components/Home/Awards/Awards';
 
-import Urls from '../config/Urls';
 import Layout from '../shared/Layout';
 import fetchRosters from '../redux/actions/rosters/fetchRosters';
 import getNflState from '../redux/actions/nflState/getNflState';
+import getLeagueInfo from '../redux/actions/league/getLeagueInfo';
 
-const Home = ({getNflState, fetchRosters, Rosters, NflState}) => {
+const Home = ({getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo}) => {
 
-    const {leagueUrl} = Urls;
-
-    const [leagueInfo, setLeagueInfo] = useState({
-        name: "",
-        avatar: ""
-    });
-
-    const getLeagueInfo = () => {
-        fetch(leagueUrl)
-            .then(res => res.json())
-            .then(data => setLeagueInfo(data))
-    }
+    
 
     const fetchData = () => {
         if (leagueInfo.name === "") {
             getLeagueInfo();
+            console.log(leagueInfo);
         }
         if (Rosters.rosters.length === 0) {
             fetchRosters();
@@ -38,7 +28,7 @@ const Home = ({getNflState, fetchRosters, Rosters, NflState}) => {
 
     useEffect(() => {
         fetchData();
-    })
+    }, [])
 
     return (
         <Layout >
@@ -53,7 +43,8 @@ const Home = ({getNflState, fetchRosters, Rosters, NflState}) => {
 const mapStateToProps = state =>  {
     return {
         Rosters: state.Rosters,
-        NflState: state.NflState
+        NflState: state.NflState,
+        leagueInfo: state.League.leagueInfo,
     }
 }
 
@@ -61,6 +52,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchRosters: () => dispatch(fetchRosters()),
         getNflState: () => dispatch(getNflState()),
+        getLeagueInfo: () => dispatch(getLeagueInfo()),
     }
 }
 
