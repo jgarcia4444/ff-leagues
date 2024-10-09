@@ -8,7 +8,8 @@ import './App.css';
 import Home from './pages/Home';
 import Matchups from "./pages/Matchups";
 import Standings from "./pages/Standings";
-import {store, persistor} from "./redux/store";
+import Store from "./redux/store";
+const {store, persistor} = Store
 
 function App() {
   const router = createBrowserRouter([
