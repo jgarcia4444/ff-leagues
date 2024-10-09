@@ -3,11 +3,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react';
 import './App.css';
 import Home from './pages/Home';
 import Matchups from "./pages/Matchups";
 import Standings from "./pages/Standings";
-import store from "./redux/store";
+import {store, persistor} from "./redux/store";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,7 +27,9 @@ function App() {
   ])
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   );
 }
