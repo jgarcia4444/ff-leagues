@@ -53,7 +53,6 @@ const MatchupsReducer = (state=initialState, action) => {
             }
         case "ROSTER_PROPERTIES_FETCHED":
             let rosterPropsMatchups = addRosterProps(state.matchups, action.dataToAdd);
-            console.log("ROSTER_PROPERTIES_FETCHED", rosterPropsMatchups);
             return {
                 ...state,
                 loading: false,

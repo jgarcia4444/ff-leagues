@@ -8,15 +8,15 @@ import Layout from '../shared/Layout';
 import fetchRosters from '../redux/actions/rosters/fetchRosters';
 import getNflState from '../redux/actions/nflState/getNflState';
 import getLeagueInfo from '../redux/actions/league/getLeagueInfo';
+import fetchUsers from '../redux/actions/users/fetchUsers';
 
-const Home = ({getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo}) => {
+const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo}) => {
 
     
 
     const fetchData = () => {
         if (leagueInfo.name === "") {
             getLeagueInfo();
-            console.log(leagueInfo);
         }
         if (Rosters.rosters.length === 0) {
             fetchRosters();
@@ -24,6 +24,11 @@ const Home = ({getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leag
         if (NflState.nflWeek === 0) {
             getNflState();
         }
+        if (Users.users.length === 0) {
+            fetchUsers();
+        }
+        console.log("Here is the roster info", Rosters.rosters);
+        console.log("Here are the users", Users.users);
     }
 
     useEffect(() => {
@@ -45,6 +50,7 @@ const mapStateToProps = state =>  {
         Rosters: state.Rosters,
         NflState: state.NflState,
         leagueInfo: state.League.leagueInfo,
+        Users: state.Users,
     }
 }
 
@@ -53,6 +59,7 @@ const mapDispatchToProps = dispatch => {
         fetchRosters: () => dispatch(fetchRosters()),
         getNflState: () => dispatch(getNflState()),
         getLeagueInfo: () => dispatch(getLeagueInfo()),
+        fetchUsers: () => dispatch(fetchUsers()),
     }
 }
 

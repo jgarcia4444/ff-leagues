@@ -9,23 +9,23 @@ import fetchMatchups from '../redux/actions/matchups/fetchMatchups';
 import getNflState from '../redux/actions/nflState/getNflState';
 import configureMatchups from '../redux/actions/matchups/configureMatchups';
 
-const Matchups = ({getNflState, NflState, fetchMatchups, Matchups, configureMatchups}) => {
+const Matchups = ({Rosters, Users, getNflState, NflState, fetchMatchups, Matchups, configureMatchups}) => {
 
     const {nflWeek} = NflState;
-    const {matchups, matchupsConfigured} = Matchups;
+    const {matchups} = Matchups;
+    const {users} = Users;
+    const {rosters} = Rosters;
 
     useEffect(() => {
-        if (matchupsConfigured === false) {
-            if (nflWeek === 0) {
-                getNflState();
-            } else {
-                 if (matchups.length === 0) {
-                     fetchMatchups(nflWeek);
-                 } else {
-                    configureMatchups();
-                 }
-            }
+        if (matchups.length === 0) {
+            fetchMatchups(nflWeek);
         }
+        if (nflWeek === 0) {
+            getNflState()
+        }
+        console.log("Here is the roster info", rosters);
+        console.log("Here are the users", users);
+        console.log("Here are the matchups", matchups)
     },[nflWeek, matchups])
 
     return (
@@ -43,6 +43,8 @@ const mapStateToProps = state => {
     return {
         NflState: state.NflState,
         Matchups: state.Matchups,
+        Users: state.Users,
+        Rosters: state.Rosters,
     }
 }
 
