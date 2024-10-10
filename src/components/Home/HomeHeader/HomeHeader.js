@@ -9,9 +9,11 @@ const HomeHeader = ({leagueInfo}) => {
     const {name, avatar} = leagueInfo;
 
     return (
-        <div className="w-full flex flex-col items-center gap-4">
-            <img src={`${avatarUrl}${avatar}`} alt="" className="w-1/3 rounded shadow-lg" />
-            <h3 className="text-4xl text-bold">{name}</h3>
+        <div className="w-full flex flex-col md:flex-row items-center mt-4">
+            <img src={`${avatarUrl}${avatar}`} alt="" className="w-3/4 md:w-1/3 rounded " />
+            <div className="md:w-1/2 md:p-6 w-full">
+                <h3 className="text-6xl text-bold text-center">{name}</h3>
+            </div>
         </div>
     )
 }
