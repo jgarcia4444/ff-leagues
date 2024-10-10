@@ -17,15 +17,13 @@ const Matchups = ({Rosters, Users, getNflState, NflState, fetchMatchups, Matchup
     const {rosters} = Rosters;
 
     useEffect(() => {
-        if (matchups.length === 0) {
-            fetchMatchups(nflWeek);
-        }
         if (nflWeek === 0) {
             getNflState()
+        } else {
+            if (matchups.length === 0) {
+                fetchMatchups(nflWeek);
+            }
         }
-        console.log("Here is the roster info", rosters);
-        console.log("Here are the users", users);
-        console.log("Here are the matchups", matchups)
     },[nflWeek, matchups])
 
     return (

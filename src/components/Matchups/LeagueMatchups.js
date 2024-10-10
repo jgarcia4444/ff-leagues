@@ -11,6 +11,8 @@ const LeagueMatchups = ({matchups}) => {
         let i = 1;
         while (i < upperLimit) {
             let matchingMatchIds = matchups.filter(matchup => matchup.matchup_id === i);
+            console.log(i)
+            // let UserOneInfo = getUser()
             let matchupInfo = {
                 team1: matchingMatchIds[0],
                 team2: matchingMatchIds[1]
