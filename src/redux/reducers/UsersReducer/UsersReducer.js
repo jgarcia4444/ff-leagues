@@ -7,6 +7,11 @@ const initialState = {
 
 const UsersReducer = (state=initialState, action) => {
     switch(action.type) {
+        case "persist/REHYDRATE":
+            return {
+                ...state,
+                ...action.payload.Users,
+            }
         case 'FETCHING_USERS':
             return {
                 ...state,
