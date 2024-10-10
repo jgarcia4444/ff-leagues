@@ -7,9 +7,15 @@ const initialState = {
 const RostersReducer = (state=initialState, action) => {
     switch(action.type) {
         case "persist/REHYDRATE":
-            console.log(action);
-            return {
-                ...action.payload.Rosters
+            console.log(action.payload)
+            if (action.payload) {
+                return {
+                    ...action.payload.Rosters
+                }
+            } else {
+                return {
+                    ...state,
+                }
             }
         case "FETCHING_ROSTERS":
             return {
