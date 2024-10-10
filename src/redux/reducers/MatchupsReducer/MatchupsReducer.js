@@ -69,7 +69,6 @@ const MatchupsReducer = (state=initialState, action) => {
                 loading: true,
             }
         case "MATCHUPS_FETCHED":
-            console.log("MATCHUPS_FETCHED CASE TRIGGERED", action.matchups)
             return {
                 ...initialState,
                 matchups: action.matchups,
