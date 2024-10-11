@@ -8,7 +8,9 @@ const MatchupTeam = ({teamInfo, winning}) => {
 
     const {avatarUrl} = Urls;
 
-    const {points, roster_id, settings, avatar_id, teamName, displayName} = teamInfo;
+    const {points, roster_id, settings, avatar, teamName, display_name, metadata} = teamInfo;
+
+    const {streak} = metadata;
 
     const {wins, losses} = settings;
 
@@ -28,17 +30,25 @@ const MatchupTeam = ({teamInfo, winning}) => {
         return indicator;
     }
 
+    const configureStreak = () => {
+        
+    }
+
     return (
         <div className={`flex flex-col w-40 items-center justify-center relative bg-slate-100 bg-opacity-50 rounded px-2`}>
             <div className="absolute left-2 top-2">
                 {winningIndicator()}
             </div>
-            <img src={`${avatarUrl}${avatar_id}`} alt="" className="w-20 h-20 rounded" />
+            <img src={`${avatarUrl}${avatar}`} alt="" className="w-20 h-20 rounded" />
             <div className="w-full text-left ">
-                <p className="text-sm  font-bold text-left text-nowrap">{teamName === undefined ? displayName : teamName} </p>
+                <p className="text-sm  font-bold text-left text-nowrap">{teamName === undefined ? display_name : teamName} </p>
             </div>
-            <div className="w-full">
-                <p className="text-xs text-left">{wins}-{losses}</p>
+            <div className="w-full flex-row flex">
+                <div className="flex flex-col items-start justify-center">
+                    {configureStreak()}
+                    <p className="text-xs text-left">{wins}-{losses}</p>
+                </div>
+                <div className=""></div>
             </div>
             {points}
         </div> 
