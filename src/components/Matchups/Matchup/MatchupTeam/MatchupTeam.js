@@ -31,8 +31,22 @@ const MatchupTeam = ({teamInfo, winning}) => {
     }
 
     const configureStreak = () => {
-        
+        var streakClass = "text-xs font-bold "
+        if (streak.split("").includes("L")) {
+            streakClass += "text-red-700";
+        } else {
+            streakClass += "text-green-700";
+        }
+        return (
+            <p className={streakClass}>{streak}</p>
+        )
     }
+    
+    const detailRowClass = "flex flex-col items-start justify-center";
+
+    const detailLabelClass = "text-xs font-thin";
+
+    const detailValueClass = "text-xs font-bold"
 
     return (
         <div className={`flex flex-col w-40 items-center justify-center relative bg-slate-100 bg-opacity-50 rounded px-2`}>
@@ -43,14 +57,21 @@ const MatchupTeam = ({teamInfo, winning}) => {
             <div className="w-full text-left ">
                 <p className="text-sm  font-bold text-left text-nowrap">{teamName === undefined ? display_name : teamName} </p>
             </div>
-            <div className="w-full flex-row flex">
-                <div className="flex flex-col items-start justify-center">
-                    {configureStreak()}
-                    <p className="text-xs text-left">{wins}-{losses}</p>
+            <div className="w-full flex-row flex gap-4">
+                <div className={detailRowClass}>
+                    <small className={detailLabelClass}>Record</small>
+                    <p className={detailValueClass}>{wins}-{losses}</p>
                 </div>
-                <div className=""></div>
+                <div className={detailRowClass}>
+                    <small className={detailLabelClass}>Strk</small>
+                    {configureStreak()}
+                </div>
+                <div className={detailRowClass}>
+                    <small className={detailLabelClass}>Pos</small>
+                    <p className={detailValueClass}></p>
+                </div>
             </div>
-            {points}
+            <p className="font-bold ">{points}</p>
         </div> 
     )
 }
