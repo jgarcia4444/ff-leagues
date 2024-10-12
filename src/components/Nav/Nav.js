@@ -7,7 +7,7 @@ const Nav = () => {
 
     const links = [
         {label: "Matchups", to: "/matchups"},
-        {label: "Standings", to: "/standings"}
+        {label: "Standings", to: "/standings"},
     ]
     const renderNavLinks = () => {
         return links.map((link, i) => <NavLink linkInfo={link} key={`${link.label}-${i}`} />);

@@ -10,7 +10,7 @@ import getNflState from '../redux/actions/nflState/getNflState';
 import getLeagueInfo from '../redux/actions/league/getLeagueInfo';
 import fetchUsers from '../redux/actions/users/fetchUsers';
 
-const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo}) => {
+const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo, clearData}) => {
 
     
 
@@ -33,12 +33,17 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [Rosters.rosters.length, Users.users.length])
+
+    const refreshButton = (
+        <button onClick={clearData}>Refresh</button>
+    )
 
     return (
         <Layout >
             <main className="text-white flex flex-col gap-8">
                 <HomeHeader leagueInfo={leagueInfo} />
+                {refreshButton}
                 <Awards />
             </main>
         </Layout>
@@ -60,6 +65,7 @@ const mapDispatchToProps = dispatch => {
         getNflState: () => dispatch(getNflState()),
         getLeagueInfo: () => dispatch(getLeagueInfo()),
         fetchUsers: () => dispatch(fetchUsers()),
+        clearData: () => dispatch({type: "CLEAR_DATA"}),
     }
 }
 

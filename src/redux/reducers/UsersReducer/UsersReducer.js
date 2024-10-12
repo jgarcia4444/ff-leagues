@@ -7,6 +7,10 @@ const initialState = {
 
 const UsersReducer = (state=initialState, action) => {
     switch(action.type) {
+        case "CLEAR_DATA":
+            return {
+                ...initialState
+            }
         case "persist/REHYDRATE":
             console.log(action.payload)
             if (action.payload) {

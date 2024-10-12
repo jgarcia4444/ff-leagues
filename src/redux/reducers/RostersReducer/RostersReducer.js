@@ -4,8 +4,16 @@ const initialState = {
     error: ""
 };
 
+const calculateStandings = rosters => {
+    // standings logic
+}
+
 const RostersReducer = (state=initialState, action) => {
     switch(action.type) {
+        case "CLEAR_DATA":
+            return {
+                ...initialState,
+            }
         case "persist/REHYDRATE":
             console.log(action.payload)
             if (action.payload) {
@@ -23,6 +31,7 @@ const RostersReducer = (state=initialState, action) => {
                 loading: true,
             }
         case "ROSTERS_FETCHED":
+            const rostersWithStandings = calculateStandings(action.rosters);
             return {
                 ...state,
                 loading: false,
