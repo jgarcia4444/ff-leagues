@@ -6,7 +6,10 @@ const Urls = {
     nflStateUrl: "https://api.sleeper.app/v1/state/nfl",
     avatarUrl: "https://sleepercdn.com/avatars/",
     rosters:  "https://api.sleeper.app/v1/league/1129475036794073088/rosters",
-    users: "https://api.sleeper.app/v1/league/1129475036794073088/users"
+    users: "https://api.sleeper.app/v1/league/1129475036794073088/users",
+    playerStats: (playerId) => {
+        return `https://api.sleeper.app/v1/league/1129475036794073088/player/${playerId}/stats`
+    }
 };
 
 export default Urls;
