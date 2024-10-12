@@ -8,7 +8,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
 
     const {avatarUrl} = Urls;
 
-    const {points, roster_id, settings, avatar, teamName, display_name, metadata} = teamInfo;
+    const {points, roster_id, settings, avatar, teamName, display_name, metadata, standing} = teamInfo;
 
     const {streak} = metadata;
 
@@ -46,7 +46,26 @@ const MatchupTeam = ({teamInfo, winning}) => {
 
     const detailLabelClass = "text-xs font-thin";
 
-    const detailValueClass = "text-xs font-bold"
+    const detailValueClass = "text-xs font-bold";
+
+    const configuredStanding = () => {
+        var suffix;
+        if (standing === 1) {
+            suffix = 'st';
+        }
+        else if (standing === 2) {
+            suffix = 'nd';
+        }
+        else if (standing === 3) {
+            suffix = 'rd';
+        }
+        else {
+            suffix = 'th';
+        }
+        return (
+            <p className={detailValueClass}>{standing}<sup>{suffix}</sup></p>
+        )
+    }
 
     return (
         <div className={`flex flex-col w-40 items-center justify-center relative bg-slate-100 bg-opacity-50 rounded px-2`}>
@@ -57,7 +76,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
             <div className="w-full text-left ">
                 <p className="text-sm  font-bold text-left text-nowrap">{teamName === undefined ? display_name : teamName} </p>
             </div>
-            <div className="w-full flex-row flex gap-4">
+            <div className="w-full flex-row flex items-start justify-between">
                 <div className={detailRowClass}>
                     <small className={detailLabelClass}>Record</small>
                     <p className={detailValueClass}>{wins}-{losses}</p>
@@ -68,7 +87,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
                 </div>
                 <div className={detailRowClass}>
                     <small className={detailLabelClass}>Pos</small>
-                    <p className={detailValueClass}></p>
+                    <p className={detailValueClass}>{configuredStanding()}</p>
                 </div>
             </div>
             <p className="font-bold ">{points}</p>

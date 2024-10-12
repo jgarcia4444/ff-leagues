@@ -5,7 +5,19 @@ const initialState = {
 };
 
 const calculateStandings = rosters => {
-    // standings logic
+    rosters = rosters.sort((a, b) => {
+        if (b.settings.wins !== a.settings.wins) {
+            return b.settings.wins - a.settings.wins
+        } else {
+            return b.settings.fpts - a.settings.fpts;
+        }
+    })
+    return rosters.map((roster, i) => {
+        return {
+            ...roster,
+            standing: i + 1
+        }
+    })
 }
 
 const RostersReducer = (state=initialState, action) => {
@@ -15,7 +27,6 @@ const RostersReducer = (state=initialState, action) => {
                 ...initialState,
             }
         case "persist/REHYDRATE":
-            console.log(action.payload)
             if (action.payload) {
                 return {
                     ...action.payload.Rosters
@@ -35,7 +46,7 @@ const RostersReducer = (state=initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                rosters: action.rosters
+                rosters: rostersWithStandings,
             }
         case "ROSTERS_ERROR":
             return {
