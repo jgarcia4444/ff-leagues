@@ -23,6 +23,10 @@ const LeagueMatchups = ({matchups, rosters, users}) => {
                 ...matchupInfo,
                 ...userInfo,
                 ...rosterInfo,
+                metadata: {
+                    ...userInfo.metadata,
+                    ...rosterInfo.metadata,
+                }
             }
         })
     }

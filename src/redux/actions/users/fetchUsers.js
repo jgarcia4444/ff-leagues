@@ -7,6 +7,7 @@ const fetchUsers = () => {
         fetch(users)
             .then(res => res.json())
             .then(data => {
+                console.log("data returned from the fetch users action", data);
                 return dispatch({type: 'USERS_FETCHED', users: data});
             })
             .catch(err => {

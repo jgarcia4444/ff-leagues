@@ -8,11 +8,21 @@ const MatchupTeam = ({teamInfo, winning}) => {
 
     const {avatarUrl} = Urls;
 
-    const {points, roster_id, settings, avatar, teamName, display_name, metadata, standing} = teamInfo;
+    const {points, roster_id, settings, display_name, metadata, standing} = teamInfo;
 
-    const {streak} = metadata;
+    const {streak, team_name} = metadata;
+
+    const avatar = metadata.avatar === undefined ? teamInfo.avatar : metadata.avatar;
 
     const {wins, losses} = settings;
+
+    const configureAvatar = () => {
+        if (metadata.avatar === undefined) {
+            return avatarUrl + avatar;
+        } else {
+            return avatar;
+        }
+    }
 
     const winningIndicator = () => {
         var indicator;
@@ -72,9 +82,9 @@ const MatchupTeam = ({teamInfo, winning}) => {
             <div className="absolute left-2 top-2">
                 {winningIndicator()}
             </div>
-            <img src={`${avatarUrl}${avatar}`} alt="" className="w-20 h-20 rounded" />
+            <img src={configureAvatar()} alt="" className="w-20 h-20 rounded" />
             <div className="w-full text-left ">
-                <p className="text-sm  font-bold text-left text-nowrap">{teamName === undefined ? display_name : teamName} </p>
+                <p className="text-sm  font-bold text-left text-nowrap">{team_name === undefined ? display_name : team_name} </p>
             </div>
             <div className="w-full flex-row flex items-start justify-between">
                 <div className={detailRowClass}>
@@ -87,7 +97,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
                 </div>
                 <div className={detailRowClass}>
                     <small className={detailLabelClass}>Pos</small>
-                    <p className={detailValueClass}>{configuredStanding()}</p>
+                    {configuredStanding()}
                 </div>
             </div>
             <p className="font-bold ">{points}</p>
