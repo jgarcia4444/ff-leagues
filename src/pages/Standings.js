@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Layout from '../shared/Layout';
 import StandingCard from '../components/Standings/StandingCard/StandingCard';
+import PageTitle from '../shared/Titles/PageTitle';
 
 const Standings = ({rosters}) => {
 
@@ -12,7 +13,7 @@ const Standings = ({rosters}) => {
 
     return (
         <Layout>
-            <h2 className="text-2xl">Standings</h2>
+            <PageTitle title={"Standings"} />
             <div className="">
                 {renderStandings()}
             </div>

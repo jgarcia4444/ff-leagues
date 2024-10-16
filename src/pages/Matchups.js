@@ -8,6 +8,7 @@ import LeagueMatchups from '../components/Matchups/LeagueMatchups';
 import fetchMatchups from '../redux/actions/matchups/fetchMatchups';
 import getNflState from '../redux/actions/nflState/getNflState';
 import configureMatchups from '../redux/actions/matchups/configureMatchups';
+import PageTitle from '../shared/Titles/PageTitle';
 
 const Matchups = ({Rosters, Users, getNflState, NflState, fetchMatchups, Matchups, configureMatchups}) => {
 
@@ -28,6 +29,7 @@ const Matchups = ({Rosters, Users, getNflState, NflState, fetchMatchups, Matchup
 
     return (
         <Layout>
+            <PageTitle title={"Matchups"}/>
             {NflState.loading === true || Matchups.loading === true  ?
                 <SpinningLoader />
                 :
