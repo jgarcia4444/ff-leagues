@@ -38,7 +38,7 @@ const StandingCard = ({roster, users}) => {
 
     const teamMacroMetrics = (
         <div className="flex flex-row">
-            
+
         </div>
     )
 
@@ -46,14 +46,16 @@ const StandingCard = ({roster, users}) => {
     return (
         <div className="flex flex-col w-full">
             <div className="flex flex-row w-full">
-                <div className="">
-                    <h3 className="">{standing}</h3>
+                <div className="w-1/6 flex flex-row items-start justify-end pr-2">
+                    <h3 className="text-4xl font-bold text-slate-400">{standing})</h3>
                 </div>
-                <div className="">
-                    <img src={avatarImageUrl()} alt="" className="rounded w-3/4" />
+                <div className="w-1/6 bg-white">
+                    <img src={avatarImageUrl()} alt="" className="rounded w-full" />
                 </div>
                 <div className="flex flex-col">
-                    <div className=""></div>
+                    <div className="ml-2">
+                        <h4 className="text-4xl font-bold text-slate-400">{teamName()}</h4>
+                    </div>
                     {teamMacroMetrics}
                 </div>
             </div>
