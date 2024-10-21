@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux'
 
 import Matchup from './Matchup/Matchup';
+import BattleRoyale from './BattleRoyale/BattleRoyale';
+import MatchupsFilter from './MatchupsFilter/MatchupsFilter';
 
 const LeagueMatchups = ({matchups, rosters, users}) => { 
+
+    const [matchupsChosen, setMatchupsChosen] = useState(true);
 
     const getRoster = roster_id => {
         return rosters.filter(roster => roster.roster_id === roster_id)[0];
@@ -31,6 +35,8 @@ const LeagueMatchups = ({matchups, rosters, users}) => {
         })
     }
 
+    console.log("MATCHUPS ", matchups)
+
     const filterMathchups = () => {
         const upperLimit = (matchups.length / 2) + 1;
         const filteredMatchups = [];
@@ -47,12 +53,19 @@ const LeagueMatchups = ({matchups, rosters, users}) => {
 
     const renderMatchups = () => {
         const filteredMatchups = filterMathchups();
-        return filteredMatchups.map((matchup, i) => <Matchup info={matchup} key={`${i}-${matchup.team1.matchup_id}`} />)
+        if (matchupsChosen === true) {
+            return filteredMatchups.map((matchup, i) => <Matchup info={matchup} key={`${i}-${matchup.team1.matchup_id}`} />)
+        } else {
+            return <BattleRoyale />
+        }
     }
 
     return (
-        <div className="w-full my-auto flex flex-row flex-wrap justify-around items-center">
-            {renderMatchups()}
+        <div className="flex flex-col">    
+            <MatchupsFilter matchupsChosen={matchupsChosen} handleChange={setMatchupsChosen} />
+            <div className="w-full my-auto flex flex-row flex-wrap justify-around items-center">
+                {renderMatchups()}
+            </div>
         </div>
     )
 }
