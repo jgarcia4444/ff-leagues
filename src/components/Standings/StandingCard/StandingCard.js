@@ -36,9 +36,33 @@ const StandingCard = ({roster, users}) => {
         }
     }
 
-    const teamMacroMetrics = (
-        <div className="flex flex-row">
+    const flexRowClass = "flex flex-row"
+    const metricsLabelClass = "text-slate-400 font-thin";
+    const metricsValueClass = "font-bold ml-2"
 
+    const teamMacroMetrics = (
+        <div className={`${flexRowClass} gap-4`}>
+            <div className={`${flexRowClass}`}>
+                <p className={metricsLabelClass}>Record</p>
+                <p className={metricsValueClass}>{wins}-{losses}</p>
+            </div>
+            <div className={`${flexRowClass}`}>
+                <p className={metricsLabelClass}>Streak</p>
+                <p className={`${streak.includes("W") === true ? "text-green-700" : "text-red-700"} ${metricsValueClass}`}>{streak}</p>
+            </div>
+        </div>
+    )
+
+    const teamPointMetrics = (
+        <div className={`${flexRowClass} gap-4`}>
+            <div className={`${flexRowClass}`}>
+                <p className={metricsLabelClass}>Pts For</p>
+                <p className={metricsValueClass}>{fpts}</p>
+            </div>
+            <div className={`${flexRowClass}`}>
+                <p className={metricsLabelClass}>Pts Against</p>
+                <p className={`${metricsValueClass}`}>{fpts_against}</p>
+            </div>
         </div>
     )
 
@@ -52,11 +76,12 @@ const StandingCard = ({roster, users}) => {
                 <div className="w-1/6 bg-white">
                     <img src={avatarImageUrl()} alt="" className="rounded w-full" />
                 </div>
-                <div className="flex flex-col">
-                    <div className="ml-2">
+                <div className="flex flex-col pl-2">
+                    <div className="">
                         <h4 className="text-4xl font-bold text-slate-400">{teamName()}</h4>
                     </div>
                     {teamMacroMetrics}
+                    {teamPointMetrics}
                 </div>
             </div>
             <div className="flex flex-row"></div>
