@@ -61,7 +61,7 @@ const LeagueMatchups = ({matchups, rosters, users}) => {
     }
 
     return (
-        <div className="flex flex-col">    
+        <div className="flex flex-col justify-start w-full">    
             <MatchupsFilter matchupsChosen={matchupsChosen} handleChange={setMatchupsChosen} />
             <div className="w-full my-auto flex flex-row flex-wrap justify-around items-center">
                 {renderMatchups()}
