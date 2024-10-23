@@ -16,7 +16,7 @@ const BattleRoyale = ({matchups}) => {
     }
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center justify-center w-full">
             {renderMatchups()}
         </div>
     )
