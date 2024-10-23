@@ -16,6 +16,7 @@ const Awards = () => {
     return (
         <section>
             <SectionTitle text={"Awards"} />
+            <MostPointsFor />
         </section>
     )
 };
