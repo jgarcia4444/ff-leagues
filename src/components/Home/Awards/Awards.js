@@ -1,5 +1,7 @@
 import React from 'react'
+
 import SectionTitle from '../../../shared/Titles/SectionTitle';
+import MostPointsFor from './MostPointsFor/MostPointsFor';
 
 import Urls from '../../../config/Urls';
 
@@ -16,7 +18,9 @@ const Awards = () => {
     return (
         <section>
             <SectionTitle text={"Awards"} />
-            <MostPointsFor />
+            <div className="w-full flex flex-row">
+                <MostPointsFor />
+            </div>
         </section>
     )
 };
