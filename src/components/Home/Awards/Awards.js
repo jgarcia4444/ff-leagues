@@ -2,6 +2,7 @@ import React from 'react'
 
 import SectionTitle from '../../../shared/Titles/SectionTitle';
 import MostPointsFor from './MostPointsFor/MostPointsFor';
+import TopSeed from './TopSeed/TopSeed';
 
 import Urls from '../../../config/Urls';
 
@@ -18,8 +19,9 @@ const Awards = () => {
     return (
         <section>
             <SectionTitle text={"Awards"} />
-            <div className="w-full flex flex-row">
+            <div className="w-full flex flex-row gap-4">
                 <MostPointsFor />
+                <TopSeed />
             </div>
         </section>
     )
