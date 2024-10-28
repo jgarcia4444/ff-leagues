@@ -5,9 +5,29 @@ import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
 
 const LongestWinStreak = ({users, rosters}) => {
 
-    const presentUser = () => {
-
+    const calculateWinningStreak = record => {
+        let recordArray = record.split("");
+        let maxStreak = 0;
+        let i = 0;
+        while (i < recordArray.length - 1) {
+            let currentNum = recordArray[i];
+            let nextNum = recordArray[i + 1];
+            if (currentNum === "W") {
+                if (currentNum === nextNum) {
+                    
+                }
+            }
+        }
     }
+
+    const presentUser = () => {
+        const rostersWithStreaks = rosters.map(roster => {
+            const rosterStreak = 0;
+            const {metadata} = roster;
+            rosterStreak = calculateWinningStreak(metadata.record)
+        })
+    }
+
     return (
         <div className="">
             <AwardsTitle text={"Longest Win Streak"} />
