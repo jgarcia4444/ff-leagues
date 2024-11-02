@@ -8,7 +8,6 @@ const LongestWinStreak = ({users, rosters}) => {
     const calculateWinningStreak = record => {
         let recordArray = record.split("");
         let maxStreak = 0;
-        let i = 0;
         if (recordArray.every(winOrLoss => winOrLoss === "W")) {
             maxStreak = recordArray.length;
         } else if (recordArray.every(winOrLoss => winOrLoss === "L")) {
@@ -43,15 +42,15 @@ const LongestWinStreak = ({users, rosters}) => {
 
     const presentUser = () => {
         const rostersWithStreaks = rosters.map(roster => {
-            const rosterStreak = 0;
             const {metadata} = roster;
-            rosterStreak = calculateWinningStreak(metadata.record);
+            const rosterStreak = calculateWinningStreak(metadata.record);
             return {
                 ...roster,
                 winStreak: rosterStreak,
             }
         })
-        const rosterWithLongestStreak = rostersWithStreaks.filter((a, b) => b.winStreak - a.winStreak)[0];
+        console.log("Rosters with streaks", rostersWithStreaks);
+        const rosterWithLongestStreak = rostersWithStreaks.sort((a, b) => b.winStreak - a.winStreak)[0];
         const user = users.filter(user => user.user_id === rosterWithLongestStreak.owner_id)[0];
         return (
             <div className="">
