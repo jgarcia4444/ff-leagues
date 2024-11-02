@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
+import AwardsCard from '../../../../shared/Cards/AwardsCard';
 
 const LongestWinStreak = ({users, rosters}) => {
 
@@ -49,18 +50,15 @@ const LongestWinStreak = ({users, rosters}) => {
                 winStreak: rosterStreak,
             }
         })
-        console.log("Rosters with streaks", rostersWithStreaks);
         const rosterWithLongestStreak = rostersWithStreaks.sort((a, b) => b.winStreak - a.winStreak)[0];
         const user = users.filter(user => user.user_id === rosterWithLongestStreak.owner_id)[0];
         return (
-            <div className="">
-                
-            </div>
+            <AwardsCard awardType='LONGEST_WIN_STREAK' user={user} extraValue={rosterWithLongestStreak.winStreak} />
         )
     }
 
     return (
-        <div className="">
+        <div className="w-full md:w-1/4">
             <AwardsTitle text={"Longest Win Streak"} />
             {presentUser()}
         </div>

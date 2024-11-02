@@ -3,11 +3,12 @@ import React from 'react';
 import Urls from '../../config/Urls';
 const {avatarUrl} = Urls;
 
-const AwardsCard = ({user, awardType, extraValue=0}) => {
+const AwardsCard = ({user, awardType="", extraValue=0}) => {
+
+    const userMetadata = user.metadata;
 
     const configuredAvatar =  userMetadata.avatar === undefined ? `${avatarUrl}${user.avatar}` : userMetadata.avatar; 
 
-    const userMetadata = user.metadata;
     const teamName = userMetadata.team_name !== undefined ? userMetadata.team_name : user.display_name; 
 
     const awardsCardContainer = "w-full flex flex-col relative";
@@ -17,9 +18,11 @@ const AwardsCard = ({user, awardType, extraValue=0}) => {
             case "MOST_POINTS_FOR":
                 return extraValue;
             case "LONGEST_WIN_STREAK":
-                return user.winStreak;
+                return extraValue;
             case "HIGHEST_SCORING_WEEK":
                 return extraValue;
+            case "TOP_SEED":
+                return "";
             default:
                 return "";
         }
