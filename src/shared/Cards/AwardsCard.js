@@ -31,7 +31,7 @@ const AwardsCard = ({user, awardType="", extraValue=0}) => {
     return (
         <div className={awardsCardContainer}>
             <img className="w-full rounded" src={configuredAvatar} alt="user avatar" />
-            <div className="absolute w-full h-full flex flex-row items-end justify-between top-0 left-0 bg-white bg-opacity-50 rounded p-2">
+            <div className="absolute w-full h-1/3 flex flex-row items-end justify-between bottom-0 left-0 bg-gradient-to-t from-white rounded p-2">
                     <h5 className="text-slate-700 font-bold text-xl">{teamName}</h5>
                     <p className="text-slate-700 font-bold text-xl">{valueDisplayed()}</p>
                 </div>
