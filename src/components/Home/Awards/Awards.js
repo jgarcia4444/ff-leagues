@@ -13,7 +13,6 @@ const Awards = () => {
 
     // REGULAR SEASON AWARDS
     // Highest Scoring Week => Can We Get Much Higher?
-    // Longest Win Streek => Run Forrest Run
 
     return (
         <section>

@@ -9,9 +9,11 @@ import fetchRosters from '../redux/actions/rosters/fetchRosters';
 import getNflState from '../redux/actions/nflState/getNflState';
 import getLeagueInfo from '../redux/actions/league/getLeagueInfo';
 import fetchUsers from '../redux/actions/users/fetchUsers';
+import SpinningLoader from '../shared/Loaders/SpinningLoader';
 
 const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo, clearData}) => {
 
+    const loading = Rosters.loading === true || Users.loading === true;
     
 
     const fetchData = () => {
@@ -44,7 +46,11 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
             <main className="text-white flex flex-col gap-8">
                 <HomeHeader leagueInfo={leagueInfo} />
                 {refreshButton}
+                {loading === true ?
+                <SpinningLoader/>
+                :
                 <Awards />
+                }
             </main>
         </Layout>
     )
