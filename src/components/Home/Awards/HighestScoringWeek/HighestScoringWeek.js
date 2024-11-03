@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux';
 
 const HighestScoringWeek = () => {
 
@@ -9,4 +10,20 @@ const HighestScoringWeek = () => {
     )
 }
 
-export default HighestScoringWeek;
+const mapStateToProps = state => {
+    return {
+        nflWeek: state.NflState.nflWeek,
+        HighestScoringWeek: state.HighestScoringWeek,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HighestScoringWeek);
