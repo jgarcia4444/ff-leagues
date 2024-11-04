@@ -13,7 +13,8 @@ import SpinningLoader from '../shared/Loaders/SpinningLoader';
 
 const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rosters, NflState, leagueInfo, clearData}) => {
 
-    const loading = Rosters.loading === true || Users.loading === true;
+    const [loading , setLoading] = useState(true);
+
     
 
     const fetchData = () => {
@@ -29,13 +30,20 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
         if (Users.users.length === 0) {
             fetchUsers();
         }
+        if (Rosters.loading === false) {
+            if (Users.loading === false) {
+                if (NflState.loading) {
+                    setLoading(false);
+                }
+            }
+        }
         console.log("Here is the roster info", Rosters.rosters);
         console.log("Here are the users", Users.users);
     }
 
     useEffect(() => {
         fetchData();
-    }, [Rosters.rosters.length, Users.users.length])
+    }, [Rosters.rosters.length, Users.users.length, NflState.nflWeek])
 
     const refreshButton = (
         <button onClick={clearData}>Refresh</button>

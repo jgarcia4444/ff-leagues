@@ -6,6 +6,7 @@ import TopSeed from './TopSeed/TopSeed';
 import LongestWinStreak from './LongestWinStreak/LongestWinStreak';
 
 import Urls from '../../../config/Urls';
+import HighestScoringWeek from './HighestScoringWeek/HighestScoringWeek';
 
 const Awards = () => {
 
@@ -21,6 +22,7 @@ const Awards = () => {
                 <MostPointsFor />
                 <TopSeed />
                 <LongestWinStreak />
+                <HighestScoringWeek />
             </div>
         </section>
     )

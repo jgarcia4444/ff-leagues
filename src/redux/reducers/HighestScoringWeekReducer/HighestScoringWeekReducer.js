@@ -2,10 +2,11 @@ const initialState = {
     matchupsToCheck: [],
     loading: false,
     highestScoringInfo: {
-        roster_id: null,
+        rosterId: null,
         points: 0,
-        nflWeekSet: null
-    }
+        nflWeekSet: 0
+    },
+    infoSet: false,
 };
 
 // Initially get all matchup info from previous weeks.
@@ -14,6 +15,18 @@ const initialState = {
 
 const HighestScoringWeekReducer = (state=initialState, action) => {
     switch(action.type) {
+        case "MATCHUPS_TO_CHECK_FETCHED":
+            console.log("MATCHUPS TO CHECK FROM THE REDUCER", action.matchupsToCheck)
+            let highestScoringMatchup = action.matchupsToCheck.sort((a, b) => b.points - a.points)[0];
+            let scoringInfo = {
+                rosterId: highestScoringMatchup.roster_id,
+                points: highestScoringMatchup.points,
+                nflWeekSet: highestScoringMatchup.nflWeek
+
+            }
+            return {
+
+            }
         default:
             return {
                 ...state,

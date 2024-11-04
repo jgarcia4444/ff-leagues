@@ -1,11 +1,21 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 
-const HighestScoringWeek = () => {
+import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
+import fetchMatchupsToCheck from '../../../../redux/actions/awards/fetchMatchupsToCheck';
+
+const HighestScoringWeek = ({nflWeek, HighestScoringWeek, fetchMatchupsToCheck}) => {
+
+    const {highestScoringInfo} = HighestScoringWeek;
+    const {nflWeekSet} = highestScoringInfo;
+
+    useEffect(() => {
+        fetchMatchupsToCheck(nflWeekSet, nflWeek);
+    })
 
     return (
         <div className="">
-
+            <AwardsTitle text={"Highest Score"} />
         </div>
     )
 }
@@ -19,7 +29,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        fetchMatchupsToCheck: (from, to) => dispatch(fetchMatchupsToCheck(from, to)),
     }
 }
 
