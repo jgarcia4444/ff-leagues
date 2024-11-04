@@ -25,6 +25,7 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
             fetchRosters();
         }
         if (NflState.nflWeek === 0) {
+            console.log("GET NFL STATE RAN FROM THE HOME PAGE.")
             getNflState();
         }
         if (Users.users.length === 0) {
@@ -32,13 +33,11 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
         }
         if (Rosters.loading === false) {
             if (Users.loading === false) {
-                if (NflState.loading) {
+                if (NflState.nflWeek === 0) {
                     setLoading(false);
                 }
             }
         }
-        console.log("Here is the roster info", Rosters.rosters);
-        console.log("Here are the users", Users.users);
     }
 
     useEffect(() => {

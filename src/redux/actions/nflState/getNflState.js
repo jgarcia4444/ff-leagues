@@ -7,9 +7,7 @@ const getNflState = () => {
         fetch(nflStateUrl)
             .then(res => res.json())
             .then(data => {
-                setTimeout(() => {
-                    return dispatch({type: "NFL_STATE_RECEIVED", nflWeek: data.display_week });
-                }, 500)
+                return dispatch({type: "NFL_STATE_RECEIVED", nflWeek: data.display_week });
             })
     }
 };

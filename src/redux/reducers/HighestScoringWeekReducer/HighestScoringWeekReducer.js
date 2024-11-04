@@ -17,7 +17,9 @@ const HighestScoringWeekReducer = (state=initialState, action) => {
     switch(action.type) {
         case "MATCHUPS_TO_CHECK_FETCHED":
             console.log("MATCHUPS TO CHECK FROM THE REDUCER", action.matchupsToCheck)
-            let highestScoringMatchup = action.matchupsToCheck.sort((a, b) => b.points - a.points)[0];
+            let sortedMatchups = action.matchupsToCheck.sort((a, b) => b.points - a.points)[0];
+            console.log("SORTED MATCHUPS", sortedMatchups);
+            let highestScoringMatchup = sortedMatchups[0];
             let scoringInfo = {
                 rosterId: highestScoringMatchup.roster_id,
                 points: highestScoringMatchup.points,
