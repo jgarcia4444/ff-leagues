@@ -10,10 +10,16 @@ const HighestScoringWeek = ({getNflState, nflWeek, HighestScoringWeek, fetchMatc
     const {highestScoringInfo} = HighestScoringWeek;
     const {nflWeekSet} = highestScoringInfo;
 
-    useEffect(() => { 
-        getNflState();
-        console.log("NFL WEEK BEFORE FETCH MATCHUPS TO CHECK", nflWeek);
-        fetchMatchupsToCheck(nflWeekSet, nflWeek);
+    const getAllMatchups = () => {
+        let i = nflWeek;
+        while (i >= 0) {
+            fetchMatchupsToCheck(i);
+            i -= 1;
+        }
+    }
+
+    useEffect(() => {
+        getAllMatchups() 
     },[])
 
     return (

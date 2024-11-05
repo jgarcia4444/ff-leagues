@@ -17,23 +17,21 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
 
     
 
-    const fetchData = () => {
+    const fetchData = () => { 
         if (leagueInfo.name === "") {
             getLeagueInfo();
         }
-        if (Rosters.rosters.length === 0) {
+        if (Rosters.roster.length === 0) {
             fetchRosters();
         }
-        if (NflState.nflWeek === 0) {
-            console.log("GET NFL STATE RAN FROM THE HOME PAGE.")
-            getNflState();
-        }
+        console.log("GET NFL STATE RAN FROM THE HOME PAGE.")
+        getNflState();
         if (Users.users.length === 0) {
             fetchUsers();
         }
         if (Rosters.loading === false) {
             if (Users.loading === false) {
-                if (NflState.nflWeek === 0) {
+                if (NflState.nflWeek !== 0) {
                     setLoading(false);
                 }
             }

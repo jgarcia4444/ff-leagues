@@ -11,6 +11,7 @@ const NFLStateReducer = (state=initialState, action) => {
                 loading: true,
             }
         case "NFL_STATE_RECEIVED":
+            console.log("ACTION FROM THE NFL_STATE_RECEIVED CASE:", action)
             return {
                 ...state,
                 loading: false,
