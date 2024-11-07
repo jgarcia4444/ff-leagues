@@ -4,8 +4,10 @@ const initialState = {
     highestScoringInfo: {
         rosterId: null,
         points: 0,
-        nflWeekSet: 0
+        nflWeekSet: 0,
+        highestScoreSet: false,
     },
+    
 };
 
 // Initially get all matchup info from previous weeks.

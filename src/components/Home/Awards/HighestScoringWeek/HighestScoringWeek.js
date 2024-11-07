@@ -4,23 +4,36 @@ import { connect } from 'react-redux';
 import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
 import fetchMatchupsToCheck from '../../../../redux/actions/awards/fetchMatchupsToCheck';
 import getNflState from '../../../../redux/actions/nflState/getNflState';
+import Urls from '../../../../config/Urls';
+const {matchupsUrl} = Urls;
 
 const HighestScoringWeek = ({getNflState, nflWeek, HighestScoringWeek, fetchMatchupsToCheck}) => {
 
     const {highestScoringInfo} = HighestScoringWeek;
-    const {nflWeekSet} = highestScoringInfo;
+    const {highestScoreSet} = highestScoringInfo;
 
     const getAllMatchups = () => {
+        let matchupUrls = [];
         let i = nflWeek;
-        while (i >= 0) {
-            fetchMatchupsToCheck(i);
+        while (i > 0) {
+            let url = `${matchupsUrl}${i}`;
+            matchupUrls.push(url);
             i -= 1;
         }
+        matchupUrls.forEach(url => fetchMatchupsToCheck(url));
     }
 
     useEffect(() => {
-        getAllMatchups() 
-    },[])
+        if (nflWeek === 0) {
+            getNflState(); 
+        } else {
+            if (highestScoreSet === false) {
+                getAllMatchups();
+            } else {
+                console.log("Highest scoring info", highestScoringInfo);
+            }
+        }
+    },[nflWeek])
 
     return (
         <div className="w-full md:w-1/4">
@@ -38,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchMatchupsToCheck: (from, to) => dispatch(fetchMatchupsToCheck(from, to)),
+        fetchMatchupsToCheck: (fetchUrl) => dispatch(fetchMatchupsToCheck(fetchUrl)),
         getNflState: () => dispatch(getNflState()),
     }
 }

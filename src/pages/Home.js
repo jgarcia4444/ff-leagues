@@ -21,7 +21,7 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
         if (leagueInfo.name === "") {
             getLeagueInfo();
         }
-        if (Rosters.roster.length === 0) {
+        if (Rosters.rosters.length === 0) {
             fetchRosters();
         }
         console.log("GET NFL STATE RAN FROM THE HOME PAGE.")
