@@ -58,7 +58,7 @@ const LongestWinStreak = ({users, rosters}) => {
     }
 
     return (
-        <div className="w-full md:w-1/4">
+        <div className="w-full md:w-1/4 shrink-0 md:shrink-1">
             <AwardsTitle text={"Longest Win Streak"} />
             {presentUser()}
         </div>

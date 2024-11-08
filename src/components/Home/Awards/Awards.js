@@ -18,7 +18,7 @@ const Awards = () => {
     return (
         <section>
             <SectionTitle text={"Awards"} />
-            <div className="w-full flex flex-row gap-4 overflow-x-auto">
+            <div className="w-full flex flex-row gap-4 overflow-x-auto ">
                 <MostPointsFor />
                 <TopSeed />
                 <LongestWinStreak />
