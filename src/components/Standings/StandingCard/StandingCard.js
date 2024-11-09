@@ -67,7 +67,7 @@ const StandingCard = ({roster, users}) => {
 
 
     return (
-        <div className="flex flex-col w-full bg-gradient-to-r from-slate-500 to-slate-900 py-2 rounded relative bg-opacity-60 shadow">
+        <div className="flex flex-col w-full md:w-72 md:h-72 bg-gradient-to-r from-slate-500 to-slate-900 py-2 md:p-2 rounded relative bg-opacity-60 shadow shrink-0">
             <div className="flex flex-row w-full">
                 <div className="w-1/6 flex flex-row items-center justify-center pr-2">
                     <h3 className="text-4xl font-bold text-slate-400">{standing})</h3>
