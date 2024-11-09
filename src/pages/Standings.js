@@ -14,7 +14,7 @@ const Standings = ({rosters}) => {
     return (
         <Layout>
             <PageTitle title={"Standings"} />
-            <div className="bg-slate-500 w-full p-4 flex flex-col gap-8 h-120 overflow-y-auto rounded shadow-inner shadow-slate-900">
+            <div className="w-full py-4 pr-2 flex flex-col gap-8 h-120 overflow-y-auto rounded ">
                 {renderStandings()}
             </div>
         </Layout>
