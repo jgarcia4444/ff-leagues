@@ -8,7 +8,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
 
     const {avatarUrl} = Urls;
 
-    const {points, roster_id, settings, display_name, metadata, standing} = teamInfo;
+    const {points, settings, display_name, metadata, standing} = teamInfo;
 
     const {streak, team_name} = metadata;
 
@@ -78,7 +78,7 @@ const MatchupTeam = ({teamInfo, winning}) => {
     }
 
     return (
-        <div className={`flex flex-col w-40 items-center justify-center relative bg-slate-100 bg-opacity-50 rounded px-2`}>
+        <div className={`flex flex-col w-48 md:w-40 items-center justify-center relative bg-slate-100 bg-opacity-50 rounded px-2`}>
             <div className="absolute left-2 top-2">
                 {winningIndicator()}
             </div>
