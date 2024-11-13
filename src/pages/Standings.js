@@ -8,7 +8,8 @@ import PageTitle from '../shared/Titles/PageTitle';
 const Standings = ({rosters}) => {
 
     const renderStandings = () => {
-        return rosters.map((roster, i) => <StandingCard key={`${i}-${roster.display_name}`} roster={roster} />)
+        let sortedStandings = rosters.sort((a, b) => b.standing - a.standing).reverse();
+        return sortedStandings.map((roster, i) => <StandingCard key={`${i}-${roster.display_name}`} roster={roster} />)
     }
 
     return (
