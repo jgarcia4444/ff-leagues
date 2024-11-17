@@ -5,7 +5,6 @@ import Urls from '../../../config/Urls';
 const {avatarUrl} = Urls;
 
 const StandingCard = ({roster, users}) => {
-    console.log("Standing card roster info", roster);
     const {standing, owner_id, settings} = roster;
     const {wins, losses, fpts, fpts_against} = settings;
     const {streak} = roster.metadata;
@@ -28,9 +27,11 @@ const StandingCard = ({roster, users}) => {
     }
 
     const teamName = () => {
-        if (metadata.tean_name !== undefined) {
+        console.log("TEAM NAME: ", metadata.team_name);
+        if (metadata.team_name !== undefined) {
             return metadata.team_name;
         } else {
+            console.log("DISPLAY NAME", display_name);
             return display_name;
         }
     }
