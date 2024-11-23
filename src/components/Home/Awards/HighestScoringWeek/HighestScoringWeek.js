@@ -37,11 +37,8 @@ const HighestScoringWeek = ({getNflState, nflWeek, HighestScoringWeek, fetchMatc
     },[nflWeek])
 
     const presentAwardCard = () => {
-        console.log("HERE ARE THE ROSTERS", rosters);
         const roster = rosters.filter(rosterInfo => rosterInfo.roster_id === highestScoringInfo.rosterId)[0];
-        console.log("Here is the roster information", roster);
         const user = users.filter(userInfo => userInfo.user_id === roster.owner_id)[0];
-        console.log("user info from the highest scoring week component.", user);
         return <AwardsCard user={user} awardType='HIGHEST_SCORING_WEEK' extraValue={highestScoringInfo.points} />
     }
 

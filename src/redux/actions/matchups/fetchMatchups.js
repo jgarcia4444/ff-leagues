@@ -1,4 +1,3 @@
-import getNflState from "../nflState/getNflState";
 import Urls from "../../../config/Urls";
 const {matchupsUrl} = Urls;
 

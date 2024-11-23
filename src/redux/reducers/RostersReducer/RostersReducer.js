@@ -5,14 +5,15 @@ const initialState = {
 };
 
 const calculateStandings = rosters => {
-    rosters = rosters.sort((a, b) => {
+    let sortedRosters = [...rosters];
+    sortedRosters = sortedRosters.sort((a, b) => {
         if (b.settings.wins !== a.settings.wins) {
             return b.settings.wins - a.settings.wins
         } else {
             return b.settings.fpts - a.settings.fpts;
         }
     })
-    return rosters.map((roster, i) => {
+    return sortedRosters.map((roster, i) => {
         return {
             ...roster,
             standing: i + 1

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Urls from '../../../../config/Urls';
 import AwardsCard from '../../../../shared/Cards/AwardsCard';
 import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
 import AwardsCardWrapper from '../../../../shared/Cards/AwardsCardWrapper';
@@ -10,7 +9,8 @@ const TopSeed = ({users, rosters}) => {
 
 
     const presentTopSeed = () => {
-        const roster = rosters.sort((a, b) => b.settings.fpts - a.settings.fpts)[0];
+        // .sort((a, b) => b.settings.fpts - a.settings.fpts)
+        const roster = rosters[0];
         const user = users.filter(userInfo => userInfo.user_id === roster.owner_id)[0];
 
         return (

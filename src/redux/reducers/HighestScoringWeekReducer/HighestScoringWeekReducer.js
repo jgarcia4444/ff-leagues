@@ -19,6 +19,7 @@ const HighestScoringWeekReducer = (state=initialState, action) => {
         case "ALL_MATCHUPS_TO_CHECK_FETCHED":
             const sortedMatchups = [...state.matchupsToCheck];
             sortedMatchups.sort((a, b) => b.points - a.points);
+            console.log(sortedMatchups)
             const highestScore = {
                 rosterId: sortedMatchups[0].roster_id,
                 points: sortedMatchups[0].points,
@@ -28,7 +29,8 @@ const HighestScoringWeekReducer = (state=initialState, action) => {
                 ...state,
                 loading: false,
                 highestScoringInfo: {
-                    ...highestScore
+                    ...highestScore,
+                    highestScoreSet: true,
                 },
                 highestScoreSet: true,
             }
@@ -38,10 +40,9 @@ const HighestScoringWeekReducer = (state=initialState, action) => {
                 loading: true,
             }
         case "MATCHUPS_TO_CHECK_FETCHED":
-            let newMatchups = state.matchupsToCheck.concat(action.matchups);
             return {
                 ...state,
-                matchupsToCheck: newMatchups,
+                matchupsToCheck: [...state.matchupsToCheck, ...action.matchups],
             }
         default:
             return {

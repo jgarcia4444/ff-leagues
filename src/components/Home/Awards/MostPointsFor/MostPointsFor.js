@@ -8,7 +8,7 @@ import AwardsCardWrapper from '../../../../shared/Cards/AwardsCardWrapper';
 
 const MostPointsFor = ({rosters, users}) => {
     const getHighestScoringRoster = () => {
-        return rosters.sort((a, b) => {
+        return [...rosters].sort((a, b) => {
             return b.settings.fpts - a.settings.fpts;
         })[0]
     }

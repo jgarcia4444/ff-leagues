@@ -22,9 +22,10 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
             getLeagueInfo();
         }
         if (Rosters.rosters.length === 0) {
-            fetchRosters();
+            if (Rosters.loading === false) {
+                fetchRosters();
+            }
         }
-        console.log("GET NFL STATE RAN FROM THE HOME PAGE.")
         getNflState();
         if (Users.users.length === 0) {
             fetchUsers();
