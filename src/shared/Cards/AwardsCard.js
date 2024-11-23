@@ -34,7 +34,7 @@ const AwardsCard = ({user, awardType="", extraValue=0}) => {
             <div className="absolute w-full h-1/3 flex flex-row items-end justify-between bottom-0 left-0 bg-gradient-to-t from-white rounded p-2">
                     <h5 className="text-slate-700 font-bold text-xl">{teamName}</h5>
                     <p className="text-slate-700 font-bold text-xl">{valueDisplayed()}</p>
-                </div>
+            </div>
         </div>
     )
 }

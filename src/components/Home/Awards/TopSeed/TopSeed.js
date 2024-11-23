@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Urls from '../../../../config/Urls';
 import AwardsCard from '../../../../shared/Cards/AwardsCard';
 import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
-const {avatarUrl} = Urls;
+import AwardsCardWrapper from '../../../../shared/Cards/AwardsCardWrapper';
 
 const TopSeed = ({users, rosters}) => {
 
@@ -19,10 +19,10 @@ const TopSeed = ({users, rosters}) => {
     }
 
     return (
-        <div className="w-full md:w-1/4 shrink-0 md:shrink-1">
+        <AwardsCardWrapper>
             <AwardsTitle text={"Top Seed"} />
             {presentTopSeed()}
-        </div>
+        </AwardsCardWrapper>
     )
 }
 

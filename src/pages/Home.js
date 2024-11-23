@@ -48,7 +48,7 @@ const Home = ({Users, fetchUsers, getNflState, fetchRosters, getLeagueInfo, Rost
 
     return (
         <Layout >
-            <main className="text-white flex flex-col gap-8 h-4/5 overflow-y-auto py-4 mt-2">
+            <main className="text-white flex flex-col gap-8 h-4/5 overflow-y-auto py-4 mt-2 shadow-inner">
                 <HomeHeader leagueInfo={leagueInfo} />
                 {refreshButton}
                 {loading === true ?

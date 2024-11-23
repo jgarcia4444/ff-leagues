@@ -6,6 +6,7 @@ import fetchMatchupsToCheck from '../../../../redux/actions/awards/fetchMatchups
 import getNflState from '../../../../redux/actions/nflState/getNflState';
 import Urls from '../../../../config/Urls';
 import AwardsCard from '../../../../shared/Cards/AwardsCard';
+import AwardsCardWrapper from '../../../../shared/Cards/AwardsCardWrapper';
 const {matchupsUrl} = Urls;
 
 const HighestScoringWeek = ({getNflState, nflWeek, HighestScoringWeek, fetchMatchupsToCheck, rosters, users}) => {
@@ -45,10 +46,10 @@ const HighestScoringWeek = ({getNflState, nflWeek, HighestScoringWeek, fetchMatc
     }
 
     return (
-        <div className="w-full md:w-1/4 shrink-0 md:shrink-1">
+        <AwardsCardWrapper>    
             <AwardsTitle text={"Highest Score"} />
             {(loading === false && highestScoreSet === true) && presentAwardCard()}
-        </div>
+        </AwardsCardWrapper>
     )
 }
 

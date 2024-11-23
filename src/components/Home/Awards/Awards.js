@@ -5,20 +5,14 @@ import MostPointsFor from './MostPointsFor/MostPointsFor';
 import TopSeed from './TopSeed/TopSeed';
 import LongestWinStreak from './LongestWinStreak/LongestWinStreak';
 
-import Urls from '../../../config/Urls';
 import HighestScoringWeek from './HighestScoringWeek/HighestScoringWeek';
 
 const Awards = () => {
 
-    const {nflStateUrl} = Urls;
-
-    // REGULAR SEASON AWARDS
-    // Highest Scoring Week => Can We Get Much Higher?
-
     return (
         <section>
             <SectionTitle text={"Awards"} />
-            <div className="w-full flex flex-row gap-4 overflow-x-auto ">
+            <div className="w-full flex flex-row gap-8 overflow-x-auto pb-2 ">
                 <MostPointsFor />
                 <TopSeed />
                 <LongestWinStreak />

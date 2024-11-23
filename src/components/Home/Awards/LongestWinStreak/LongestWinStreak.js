@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import AwardsTitle from '../../../../shared/Titles/AwardsTitle';
 import AwardsCard from '../../../../shared/Cards/AwardsCard';
+import AwardsCardWrapper from '../../../../shared/Cards/AwardsCardWrapper';
 
 const LongestWinStreak = ({users, rosters}) => {
 
@@ -58,10 +59,10 @@ const LongestWinStreak = ({users, rosters}) => {
     }
 
     return (
-        <div className="w-full md:w-1/4 shrink-0 md:shrink-1">
+        <AwardsCardWrapper>
             <AwardsTitle text={"Longest Win Streak"} />
             {presentUser()}
-        </div>
+        </AwardsCardWrapper>
     )
 };
 
